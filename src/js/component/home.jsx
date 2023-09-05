@@ -1,26 +1,72 @@
 import React from "react";
-
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import "../../HojasEstilo/hojaEstilo-Card.css";
+import "../../HojasEstilo/hojaEstilo-header.css";
 
 //create your first component
-const Home = () => {
+import Card from "../../MisComponentes/card";
+import Barra from "../../MisComponentes/barra";
+import Header from "../../MisComponentes/header";
+
+function Home() {
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container w-auto p-0 max-width: 1400px " >
+			<Barra
+				marca="Bootstrap"
+				item1="About"
+				item2="Active"
+				item3="Pricing"
+				item4="Home"
+			/>
+			<Header
+				imagenSalento="data:image/jpeg;base64,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"
+				titulo="Bienvenidos a Salento"
+				texto="Salento es una ciudad andina de Colombia, al oeste de Bogotá. Es conocida por sus fincas cafeteras y la vegetación de su entorno. Al este se encuentra el Valle del Cocora, donde las palmas de cera, un símbolo nacional, albergan loros poco comunes. La ciudad es una vía de acceso a las cimas nevadas del Parque nacional natural Los Nevados, al noreste."
+				tituloBoton="Conocenos"
+			/>
+
+
+
+			<div className="row">
+				<div className="col-md-3">
+					<Card
+						image="https://media.istockphoto.com/id/1174780562/es/foto/vista-a-los-coloridos-balcones-de-madera-de-estilo-colonial-en-filandia-colombia.webp?b=1&s=612x612&w=0&k=20&c=tjyfoA_4daSNAQNjMueReMAOHHxuJ2OnMe1PafgYM7c="
+						titulo="Filandia"
+						texto="Filandia es un municipio colombiano perteneciente al departamento del Quindío.​ Originalmente, el territorio en que se encuentra ubicado el municipio estuvo habitado por indígenas quimbayas. Las tierras de Filandia hacia el año 1540 fueron denominadas por los colonos españoles como «provincia quimbaya»"
+						nombreBoton="Conocenos"
+					/>
+				</div>
+
+				<div className="col-md-3">
+					<Card
+						image="https://media.istockphoto.com/id/1174780562/es/foto/vista-a-los-coloridos-balcones-de-madera-de-estilo-colonial-en-filandia-colombia.webp?b=1&s=612x612&w=0&k=20&c=tjyfoA_4daSNAQNjMueReMAOHHxuJ2OnMe1PafgYM7c="
+						titulo="Filandia"
+						texto="Filandia es un municipio colombiano perteneciente al departamento del Quindío.​ Originalmente, el territorio en que se encuentra ubicado el municipio estuvo habitado por indígenas quimbayas. Las tierras de Filandia hacia el año 1540 fueron denominadas por los colonos españoles como «provincia quimbaya»"
+						nombreBoton="Conocenos"
+					/>
+				</div>
+
+				<div className="col-md-3">
+					<Card
+						image="https://media.istockphoto.com/id/1174780562/es/foto/vista-a-los-coloridos-balcones-de-madera-de-estilo-colonial-en-filandia-colombia.webp?b=1&s=612x612&w=0&k=20&c=tjyfoA_4daSNAQNjMueReMAOHHxuJ2OnMe1PafgYM7c="
+						titulo="Filandia"
+						texto="Filandia es un municipio colombiano perteneciente al departamento del Quindío.​ Originalmente, el territorio en que se encuentra ubicado el municipio estuvo habitado por indígenas quimbayas. Las tierras de Filandia hacia el año 1540 fueron denominadas por los colonos españoles como «provincia quimbaya»"
+						nombreBoton="Conocenos"
+					/>
+				</div>
+
+				<div className="col-md-3">
+					<Card
+						image="https://media.istockphoto.com/id/1174780562/es/foto/vista-a-los-coloridos-balcones-de-madera-de-estilo-colonial-en-filandia-colombia.webp?b=1&s=612x612&w=0&k=20&c=tjyfoA_4daSNAQNjMueReMAOHHxuJ2OnMe1PafgYM7c="
+						titulo="Filandia"
+						texto="Filandia es un municipio colombiano perteneciente al departamento del Quindío.​ Originalmente, el territorio en que se encuentra ubicado el municipio estuvo habitado por indígenas quimbayas. Las tierras de Filandia hacia el año 1540 fueron denominadas por los colonos españoles como «provincia quimbaya»"
+						nombreBoton="Conocenos"
+					/>
+				</div>
+
+			</div>
+
 		</div>
 	);
-};
+}
 
 export default Home;

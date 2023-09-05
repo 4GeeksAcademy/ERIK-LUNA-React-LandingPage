@@ -1,0 +1,12 @@
+h6 {
+    font-size: 200px; 
+    -webkit-text-stroke: 4px black;
+    color: rgb(145, 233, 45);
+}
+
+p {
+    font-size: 20px; 
+    -webkit-text-stroke: 1px black;
+    color: rgb(241, 247, 235);
+}
+
